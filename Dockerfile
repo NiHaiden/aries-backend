@@ -1,5 +1,5 @@
 FROM eclipse-temurin:17.0.7_7-jre-jammy
-LABEL authors="niklas"
+LABEL authors="Niklas Haiden"
 
 RUN mkdir /opt/app
 COPY aries-backend.jar /opt/app/aries-backend.jar
