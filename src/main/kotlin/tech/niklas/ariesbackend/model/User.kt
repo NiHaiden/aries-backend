@@ -17,8 +17,6 @@ data class User(
         @NotBlank
         val username: String,
 
-        @Column(name = "pfp_url")
-        val userPFPUrl : String
 ) {
 
     override fun equals(other: Any?): Boolean {
