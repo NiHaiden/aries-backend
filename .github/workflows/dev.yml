@@ -42,7 +42,7 @@ jobs:
 
   build-dev-docker-image:
     runs-on: ubuntu-latest
-    needs: build-jar
+    needs: build-dev-jar
 
     steps:
       - uses: actions/checkout@v3
