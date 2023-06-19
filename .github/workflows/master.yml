@@ -67,7 +67,7 @@ jobs:
       uses: docker/login-action@v2
       with: 
         username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB.PASSWORD }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
         
     - name: Set current date for image building
       run: echo "DATE=$(date +%s)" >> $GITHUB_ENV
