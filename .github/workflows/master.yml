@@ -54,7 +54,7 @@ jobs:
     
     - uses: actions/download-artifact@master
       with:
-        name: jar-file
+        name: Aries Backend Jar
         path: aries-backend.jar
     
     - name: Setup QEMU for Multi-Arch
