@@ -28,8 +28,6 @@ data class DockerMachine(
     val machineHostname: String,
 
     // the reported linux kernel version by the agent
-    @NotBlank
-    @NotNull
     @Column(name = "machineKernel")
     val machineKernel : String,
 
