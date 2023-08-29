@@ -1,22 +1,29 @@
 package tech.niklas.ariesbackend.web
 
+import org.springframework.security.core.Authentication
 import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.oauth2.core.oidc.user.OidcUser
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import tech.niklas.ariesbackend.db.UserRepository
-import tech.niklas.ariesbackend.model.User
 
 
 @RestController
+@RequestMapping("/users")
 class UserController(private val userRepository: UserRepository) {
-    @GetMapping("/users/hello")
-    fun userHello(): User {
-        return userRepository.save(User(99, "Niklas Haiden"))
+    @GetMapping("/getuserinfo")
+    fun userinfo(): Map<String, Any> {
+        val authenticationtoken: Authentication = SecurityContextHolder.getContext().authentication
+        lateinit var attributes: Map<String, Any>
+        if (authenticationtoken is JwtAuthenticationToken) {
+            attributes = authenticationtoken.tokenAttributes
+        }
+        return attributes
     }
 
-    @GetMapping("/users/getall")
-    fun getAllUsers(): List<User> {
-        return userRepository.findAll()
-    }
+
+
 }

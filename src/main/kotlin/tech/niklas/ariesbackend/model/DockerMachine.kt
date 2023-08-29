@@ -13,29 +13,34 @@ import org.hibernate.Hibernate
 @Entity
 @Table(name = "dockermachines")
 data class DockerMachine(
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    val machineID : String?,
+        @Id
+        @GeneratedValue(strategy = GenerationType.UUID)
+        val machineID: String,
 
-    @NotBlank
-    @NotNull
-    @Column(name = "machineName")
-    val machineName : String,
+        @NotBlank
+        @NotNull
+        @Column(name = "machineName")
+        val machineName: String,
 
-    @NotBlank
-    @NotNull
-    @Column(name = "machineHostname")
-    val machineHostname: String,
+        @NotBlank
+        @NotNull
+        @Column(name = "machineHostname")
+        val machineHostname: String,
 
-    // the reported linux kernel version by the agent
-    @Column(name = "machineKernel")
-    val machineKernel : String,
+        // the reported linux kernel version by the agent
+        @Column(name = "machineKernel")
+        val machineKernel: String,
 
-    // the reported linux distro
-    @NotBlank
-    @NotNull
-    @Column(name = "machineDistro")
-    val machineDistro : String,
+        // the reported linux distro
+        @NotBlank
+        @NotNull
+        @Column(name = "machineDistro")
+        val machineDistro: String,
+
+        @NotBlank
+        @NotNull
+        @Column(name = "machineConnectUrl")
+        val machineConnectUrl: String
 
 ) {
     override fun equals(other: Any?): Boolean {
