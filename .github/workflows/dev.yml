@@ -16,12 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - uses: actions/download-artifact@master
-        with:
-          name: Aries Backend Jar
-          path: aries-backend-dev.jar
-
+      
       - name: Setup QEMU for Multi-Arch
         uses: docker/setup-qemu-action@v2
 
