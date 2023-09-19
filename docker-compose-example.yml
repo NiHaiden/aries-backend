@@ -1,0 +1,29 @@
+
+version: '2'
+
+services:
+  database:
+    image: postgres
+    environment:
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=aries'
+      - 'POSTGRES_DB=aries'
+    volumes:
+      - 'pgdata:/var/lib/postgresql'
+    ports:
+      - '5432'
+
+  aries:
+    image: cr.nkls.pw/aries-backend:latest-dev
+    environment:
+      - 'DB_USERNAME=aries'
+      - 'DB_PASSWORD=password'
+      - 'DB_URL=jdbc:postgresql://database:5432/aries'
+      - 'JWT_ISSUER_URL=https://auth.example.com/realms/aries'
+      - 'KC_CLIENT_ID=aries-backend'
+      - 'KC_CLIENT_SECRET=xxxxxx'
+    ports:
+      - '8089:8080'
+
+volumes:
+  pgdata:
