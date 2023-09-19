@@ -1,4 +1,4 @@
-FROM gradle:7.6-jdk17-alpine AS build
+FROM gradle:7.6.2-jdk17-jammy AS build
 RUN mkdir -p /home/aries
 COPY --chown=gradle:gradle . /home/aries/src
 WORKDIR /home/aries/src
