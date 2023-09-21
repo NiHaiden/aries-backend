@@ -4,7 +4,7 @@ COPY --chown=gradle:gradle . /home/aries/src
 WORKDIR /home/aries/src
 RUN gradle bootJar --no-daemon
 
-FROM eclipse-temurin:17.0.7_7-jre-jammy
+FROM eclipse-temurin:17-alpine
 LABEL authors="Niklas Haiden"
 
 RUN mkdir /aries
