@@ -52,4 +52,10 @@ data class DockerMachine(
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(machineName = $machineName , machineHostname = $machineHostname , machineKernel = $machineKernel , machineDistro = $machineDistro , machineConnectUrl = $machineConnectUrl )"
+    }
+
 }
