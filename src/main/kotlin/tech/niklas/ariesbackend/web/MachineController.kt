@@ -1,14 +1,10 @@
 package tech.niklas.ariesbackend.web
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.server.ResponseStatusException
 import tech.niklas.ariesbackend.db.DockerMachineRepository
 import tech.niklas.ariesbackend.exception.MachineAlreadyExistsException
 import tech.niklas.ariesbackend.model.DockerMachine
 import kotlin.jvm.optionals.getOrElse
-import kotlin.jvm.optionals.getOrNull
 
 @RestController
 @RequestMapping("/machine")
