@@ -48,7 +48,7 @@ data class DockerMachine(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as DockerMachine
 
-        return machineID != null && machineID == other.machineID
+        return machineID == other.machineID
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
