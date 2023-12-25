@@ -17,16 +17,16 @@ open class DockerService protected constructor(
     @NotBlank
     @NotNull
     @Column(name = "serviceName")
-    val serviceName : String,
+    var serviceName : String,
 
     @NotNull
-    val serviceType : ServiceType,
+    var serviceType : ServiceType,
 
     //On which machine does the service run?
     @NotNull
     @ManyToOne
     @JoinColumn(name = "machineID")
-    val serviceMachine: DockerMachine
+    var serviceMachine: DockerMachine
 
 ) {
     override fun equals(other: Any?): Boolean {

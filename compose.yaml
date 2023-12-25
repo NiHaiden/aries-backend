@@ -7,3 +7,15 @@ services:
       - 'POSTGRES_USER=myuser'
     ports:
       - '5433:5432'
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: niklas@niklas.tech
+      PGADMIN_DEFAULT_PASSWORD: Niklas12
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  pgadmin-data:

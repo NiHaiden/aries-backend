@@ -7,21 +7,26 @@ import org.hibernate.Hibernate
 
 @Entity
 @Table(name = "dockeragents")
-data class DockerAgent (
+data class DockerAgent(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val agentUUID : String?,
+    val agentUUID: String?,
 
     @NotBlank
     @NotNull
     @Column(name = "agentname")
-    val agentName : String,
+    var agentName: String,
 
     @NotBlank
     @NotNull
     @Column(name = "agentsecret")
-    val agentSecret: String
+    var agentSecret: String,
 
+
+    @NotBlank
+    @NotNull
+    @Column(name = "connecturl")
+    var connectUrl: String
 
 
 ) {

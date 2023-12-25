@@ -20,5 +20,13 @@ class CentralExceptionHandler {
         return ResponseEntity<String>(ex.message, HttpStatus.BAD_REQUEST)
     }
 
+    @ExceptionHandler(ServiceAlreadyExistsException::class)
+    fun handleServiceAlreadyExistsEx(ex: ServiceAlreadyExistsException, rq: WebRequest): ResponseEntity<String> {
+        return ResponseEntity<String>(ex.message, HttpStatus.BAD_REQUEST)
+    }
 
+    @ExceptionHandler(ServiceDoesntExistException::class)
+    fun handleServiceAlreadyExistsEx(ex: ServiceDoesntExistException, rq: WebRequest): ResponseEntity<String> {
+        return ResponseEntity<String>(ex.message, HttpStatus.NOT_FOUND)
+    }
 }

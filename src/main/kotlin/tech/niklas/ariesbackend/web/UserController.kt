@@ -14,10 +14,10 @@ import tech.niklas.ariesbackend.db.UserRepository
 class UserController(private val userRepository: UserRepository) {
     @GetMapping("/getuserinfo")
     fun userinfo(): Map<String, Any> {
-        val authenticationtoken: Authentication = SecurityContextHolder.getContext().authentication
+        val authenticationToken: Authentication = SecurityContextHolder.getContext().authentication
         lateinit var attributes: Map<String, Any>
-        if (authenticationtoken is JwtAuthenticationToken) {
-            attributes = authenticationtoken.tokenAttributes
+        if (authenticationToken is JwtAuthenticationToken) {
+            attributes = authenticationToken.tokenAttributes
         }
         return attributes
     }

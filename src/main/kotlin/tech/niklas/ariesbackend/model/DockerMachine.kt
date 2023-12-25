@@ -20,7 +20,7 @@ data class DockerMachine(
         @NotBlank
         @NotNull
         @Column(name = "machineName")
-        val machineName: String,
+        var machineName: String,
 
         @NotBlank
         @NotNull
@@ -35,12 +35,12 @@ data class DockerMachine(
         @NotBlank
         @NotNull
         @Column(name = "machineDistro")
-        val machineDistro: String,
+        var machineDistro: String,
 
         @NotBlank
         @NotNull
         @Column(name = "machineConnectUrl")
-        val machineConnectUrl: String
+        var machineConnectUrl: String
 
 ) {
     override fun equals(other: Any?): Boolean {

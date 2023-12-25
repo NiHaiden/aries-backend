@@ -1,39 +1,42 @@
 package tech.niklas.ariesbackend.web
 
+import jakarta.validation.constraints.NotBlank
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import tech.niklas.ariesbackend.db.DockerMachineRepository
-import tech.niklas.ariesbackend.exception.MachineAlreadyExistsException
 import tech.niklas.ariesbackend.model.DockerMachine
-import kotlin.jvm.optionals.getOrElse
+import tech.niklas.ariesbackend.service.DockerMachineService
 
 @RestController
 @RequestMapping("/machine")
-class MachineController(private val dockerMachineRepository: DockerMachineRepository) {
+class MachineController(@Autowired private val dockerMachineService: DockerMachineService) {
     @PostMapping("/new")
-    fun registerNew(@RequestBody dockerMachine: DockerMachine): DockerMachine {
-        if(dockerMachineRepository.existsByMachineName(dockerMachine.machineName) ) {
-            throw MachineAlreadyExistsException("The machine ${dockerMachine.machineName} already exists in the database!")
-        }
-        return dockerMachineRepository.save(dockerMachine)
+    fun newMachine(@RequestBody dockerMachine: DockerMachine): DockerMachine {
+        return dockerMachineService.registerNew(dockerMachine)
     }
 
     @GetMapping("/get")
     fun getAll(): List<DockerMachine> {
-        return dockerMachineRepository.findAll()
+        return dockerMachineService.getAll()
     }
 
     @GetMapping("/get/{id}")
     fun getSpecificMachine(@PathVariable id: String): DockerMachine {
-        return dockerMachineRepository.findById(id).getOrElse {
-            throw MachineAlreadyExistsException("not found lol")
-        }
+        return dockerMachineService.getSpecificMachine(id)
     }
 
     @DeleteMapping("/delete/{id}")
     fun deleteMachine(@PathVariable id: String): String {
-        dockerMachineRepository.deleteById(id)
-        return "Deleted machine with id $id"
+        return dockerMachineService.deleteMachine(id)
     }
 
+    @GetMapping("/exists/{id}")
+    fun machineExists(@NotBlank @PathVariable id: String): Boolean {
+        return dockerMachineService.machineExists(id)
+    }
 
+    @PatchMapping("/update/{id}")
+    fun updateMachine(@PathVariable @NotBlank id: String, @RequestBody dockerMachine: DockerMachine): DockerMachine {
+
+        return dockerMachineService.updateMachine(id, dockerMachine)
+    }
 }
