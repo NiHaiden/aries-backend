@@ -17,5 +17,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: Niklas12
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 volumes:
   pgadmin-data:
