@@ -28,7 +28,7 @@ open class DockerService protected constructor(
     @JoinColumn(name = "machineID")
     var serviceMachine: DockerMachine,
 
-    @OneToOne
+
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
