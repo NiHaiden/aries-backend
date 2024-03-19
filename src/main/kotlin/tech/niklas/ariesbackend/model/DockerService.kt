@@ -26,7 +26,8 @@ open class DockerService protected constructor(
     @NotNull
     @ManyToOne
     @JoinColumn(name = "machineID")
-    var serviceMachine: DockerMachine
+    var serviceMachine: DockerMachine,
+
 
 ) {
     override fun equals(other: Any?): Boolean {

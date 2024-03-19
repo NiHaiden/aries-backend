@@ -36,7 +36,6 @@ class MachineController(@Autowired private val dockerMachineService: DockerMachi
 
     @PatchMapping("/update/{id}")
     fun updateMachine(@PathVariable @NotBlank id: String, @RequestBody dockerMachine: DockerMachine): DockerMachine {
-
         return dockerMachineService.updateMachine(id, dockerMachine)
     }
 }

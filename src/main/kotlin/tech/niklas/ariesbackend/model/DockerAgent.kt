@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import org.hibernate.Hibernate
-
+import java.io.Serial
 @Entity
 @Table(name = "dockeragents")
 data class DockerAgent(
